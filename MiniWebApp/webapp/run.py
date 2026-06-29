@@ -1,4 +1,7 @@
 from web.views import app
+from users.models.db import db
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    with app.app_context():
+        db.create_all()
+    app.run(host='0.0.0.0', port=5000)
